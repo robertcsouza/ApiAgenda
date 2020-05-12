@@ -3,6 +3,7 @@ import {promisify}  from 'util';
 import AuthConfig from '../config/auth';
 export default async (req,res,next)=>{
     const authHeader = req.headers.authorization;
+
     
     if(!authHeader){
         return res.status(401).json({error:'token nao existe'});

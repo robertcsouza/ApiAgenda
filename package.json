@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "nodemon src/server.js"
   },
+  "build": "sucrase ./src -d ./dist --transforms imports",
+  "start": "node dist/server.js",
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -14,8 +16,11 @@
   },
   "dependencies": {
     "bcrypt": "^4.0.1",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.7"
+    "mongoose": "^5.9.7",
+    "multer": "^1.4.2",
+    "socket.io": "^2.3.0"
   }
 }

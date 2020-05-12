@@ -3,14 +3,18 @@ import User from '../models/User';
 class CadastroController {
 
     async store(req,res){
-      
-        const { nome , email, senha, nascimento} = req.body;
         
+        
+
+        const { nome , email, senha, nascimento} = req.body;
+        const { filename } = req.file;
 
             let user = await User.findOne({email});
 
+
             if(!user){
                 user = await User.create({
+                    thumbnail: filename,
                     nome,
                     email,
                     senha,
@@ -20,7 +24,8 @@ class CadastroController {
 
                 
 
-                return res.json({ok:"usuario cadastrado com sucesso"});
+                //return res.json({ok:"usuario cadastrado com sucesso"});
+                return res.json(user);
 
                 
             }
