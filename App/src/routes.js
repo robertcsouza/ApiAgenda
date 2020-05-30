@@ -9,6 +9,7 @@ import AgendamentoController from '../controllers/AgendamentoController';
 import DisponivelController from '../controllers/DisponivelController';
 import SessionController from '../controllers/SessionController';
 import UsuarioController from '../controllers/UsuarioController';
+import NovosClientesController from '../controllers/NovosClientesController';
 
 const routes = new Router();
 
@@ -37,6 +38,12 @@ routes.post('/agendamentos',authMiddleware,AgendamentoController.show);
 routes.delete('/agendamentos',authMiddleware, AgendamentoController.destroy);
 
 routes.get('/agendamentos',authMiddleware,AgendamentoController.index);
+
+routes.put('/admin/finalizar',authMiddleware,AgendamentoController.finalizarAgendamento);
+
+routes.get('/admin/receita',authMiddleware,AgendamentoController.showReceita);
+
+routes.get('/admin/novos_clientes',authMiddleware,NovosClientesController.show);
 
 routes.get('/notificacao',authMiddleware,AgendamentoController.notificacao);
 

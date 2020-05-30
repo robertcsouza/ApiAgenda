@@ -13,8 +13,16 @@ class App{
         this.app = require('http').createServer(this.server)
         this.serverIO = serverSocket(this.app);
 
-        this.serverIO.on('connection',()=>{
+        this.serverIO.on('connection',(socket)=>{
             console.log('conectado');
+            console.log(socket.id);
+
+        });
+
+        this.serverIO.on('disconnect',(socket)=>{
+            console.log('desconectado');
+            console.log(socket.id);
+
         });
         mongoose.connect('mongodb://localhost:27017/agenda',{
             useNewUrlParser:true,
